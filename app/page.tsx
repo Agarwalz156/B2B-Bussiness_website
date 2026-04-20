@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { LeadForm } from '@/components/LeadForm';
 import { ServiceCard } from '@/components/ServiceCard';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
@@ -226,6 +225,27 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="section-container">
+  <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+    
+    <div>
+      <p className="text-sm uppercase tracking-[0.3em] text-neutral">
+        Request inspection
+      </p>
+      <h2 className="mt-4 text-3xl font-semibold text-primary">
+        Get a site inspection from our engineering team
+      </h2>
+      <p className="mt-4 text-sm leading-7 text-neutral">
+        Share your requirement and our engineer will contact you within 24 hours.
+      </p>
+    </div>
+
+    <div className="rounded-xl border border-border bg-white p-8 shadow-card">
+      <LeadForm />
+    </div>
+
+  </div>
+</section>
 
       <section className="section-container bg-white py-16">
         <div className="rounded-xl border border-border bg-surface p-10 text-center">
