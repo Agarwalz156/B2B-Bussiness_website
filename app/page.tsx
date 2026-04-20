@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import LeadForm from '@/components/LeadForm';
+import { LeadForm } from '@/components/LeadForm';
 import { ServiceCard } from '@/components/ServiceCard';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ShimmerButton } from '@/components/ShimmerButton';
