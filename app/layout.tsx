@@ -1,6 +1,4 @@
-'use client';
-
-import type { Metadata } from 'next';
+import type { Metadata, ReactNode } from 'next';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -10,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Four Way Engineers provides fire safety systems, gas pipeline engineering, AMC services, and industrial fabrication across Haridwar and North India.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
