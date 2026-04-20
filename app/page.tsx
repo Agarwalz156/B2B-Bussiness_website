@@ -1,6 +1,17 @@
+'use client';
+
 import Link from 'next/link';
+import LeadForm from '@/components/LeadForm';
 import { ServiceCard } from '@/components/ServiceCard';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ShimmerButton } from '@/components/ShimmerButton';
+import { RainbowButton } from '@/components/RainbowButton';
+import { PulsatingButton } from '@/components/PulsatingButton';
+import { TextHighlighter, HighlightedText } from '@/components/TextHighlighter';
+import { AnimatedCard, FadeIn } from '@/components/AnimatedCard';
+import { AnimatedCircularBar } from '@/components/AnimatedCircularBar';
+import { HexagonBackground } from '@/components/HexagonPattern';
+import { BorderBeam } from '@/components/BorderBeam';
 
 const services = [
   {
@@ -73,198 +84,268 @@ const certifications = [
 export default function Home() {
   return (
     <>
-      <section className="bg-surface">
-        <div className="section-container grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-          <div className="max-w-2xl">
-            <p className="mb-4 inline-flex rounded-lg bg-surface px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
+      {/* Hero Section */}
+      <section className="bg-surface relative overflow-hidden">
+        <div className="section-container grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center py-16">
+          <FadeIn className="max-w-2xl" direction="left">
+            <p className="mb-4 inline-flex rounded-lg bg-white border border-border px-4 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent hover:shadow-md transition-all duration-300 animate-bounce-slow">
               25+ years industrial engineering
             </p>
             <h1 className="text-5xl font-semibold leading-tight text-primary sm:text-6xl">
-              Fire safety and gas pipeline solutions for Haridwar and North India industrial sites
+              <TextHighlighter color="#D62828">Fire safety</TextHighlighter> and 
+              <TextHighlighter color="#D62828"> gas pipeline </TextHighlighter>solutions for Haridwar and North India industrial sites
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-neutral">
               Four Way Engineers supports factory managers, safety officers and procurement teams with engineered fire protection, LPG/industrial gas distribution and AMC delivery for process plants and heavy industry.
             </p>
+            
+            {/* Stats Cards with Animations */}
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-semibold text-primary">
-                25+ Years Experience
-              </div>
-              <div className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-semibold text-primary">
-                250+ Industrial Clients
-              </div>
-              <div className="rounded-lg border border-border bg-surface px-4 py-3 text-sm text-neutral">
-                Free Site Inspection in Haridwar & Nearby Areas
-              </div>
+              <AnimatedCard className="hover:border-accent" delay={100}>
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-accent">25+ Years</p>
+                  <p className="text-lg font-bold text-primary">Experience</p>
+                </div>
+              </AnimatedCard>
+              <AnimatedCard className="hover:border-accent" delay={200}>
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-accent">250+ Clients</p>
+                  <p className="text-lg font-bold text-primary">Served</p>
+                </div>
+              </AnimatedCard>
+              <AnimatedCard className="hover:border-accent" delay={300}>
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-accent">Free Inspection</p>
+                  <p className="text-xs font-bold text-primary">Haridwar & Nearby</p>
+                </div>
+              </AnimatedCard>
             </div>
+
+            {/* CTA Buttons */}
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/request-quote" className="inline-flex rounded-lg bg-accent px-7 py-4 text-sm font-semibold text-white">
+              <ShimmerButton href="/request-quote">
                 Request Site Inspection
-              </Link>
-              <Link href="tel:+919837476323" className="inline-flex rounded-lg border border-border bg-white px-7 py-4 text-sm font-semibold text-primary">
-                Call +91 98374 76323
-              </Link>
+              </ShimmerButton>
+              <PulsatingButton href="tel:+919837476323" variant="primary">
+                📞 Call +91 98374 76323
+              </PulsatingButton>
             </div>
-          </div>
-          <div className="rounded-xl border border-border bg-white p-10 shadow-card">
-            <div className="grid gap-6">
-              <div className="rounded-lg bg-surface p-6">
-                <p className="text-sm uppercase tracking-[0.3em] text-neutral">Inspection-ready service</p>
-                <h2 className="mt-4 text-2xl font-semibold text-primary">Schedule an industrial site review today</h2>
-                <p className="mt-3 text-sm leading-7 text-neutral">
-                  Our engineers verify risk, compliance and installation scope so you can approve work with confidence.
-                </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {proofItems.slice(0, 2).map((item) => (
-                  <div key={item.label} className="rounded-xl bg-surface p-5">
-                    <p className="text-3xl font-semibold text-primary">{item.value}</p>
-                    <p className="mt-2 text-sm text-neutral">{item.label}</p>
-                  </div>
-                ))}
-                <div className="rounded-xl bg-surface p-5 sm:col-span-2">
-                  <p className="text-3xl font-semibold text-primary">{proofItems[2].value}</p>
-                  <p className="mt-2 text-sm text-neutral">{proofItems[2].label}</p>
+          </FadeIn>
+
+          {/* Right Side Card with Border Beam */}
+          <FadeIn direction="right" delay={200}>
+            <BorderBeam className="rounded-xl bg-white p-10 shadow-lg">
+              <div className="grid gap-6">
+                <div className="rounded-lg bg-gradient-to-br from-surface to-white p-6 hover:shadow-md transition-all duration-300">
+                  <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Inspection-ready service</p>
+                  <h2 className="mt-4 text-2xl font-semibold text-primary">Schedule an industrial site review today</h2>
+                  <p className="mt-3 text-sm leading-7 text-neutral">
+                    Our engineers verify risk, compliance and installation scope so you can approve work with confidence.
+                  </p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {proofItems.slice(0, 2).map((item, idx) => (
+                    <AnimatedCard key={item.label} delay={300 + idx * 100}>
+                      <div className="p-5">
+                        <p className="text-3xl font-bold text-accent">{item.value}</p>
+                        <p className="mt-2 text-sm text-neutral">{item.label}</p>
+                      </div>
+                    </AnimatedCard>
+                  ))}
+                  <AnimatedCard delay={500} className="sm:col-span-2">
+                    <div className="p-5">
+                      <p className="text-3xl font-bold text-accent">{proofItems[2].value}</p>
+                      <p className="mt-2 text-sm text-neutral">{proofItems[2].label}</p>
+                    </div>
+                  </AnimatedCard>
                 </div>
               </div>
+            </BorderBeam>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="section-container py-10">
+        <AnimatedCard className="border-accent/20">
+          <div className="p-8">
+            <h2 className="text-xl font-semibold text-primary">Trusted by 250+ industrial operations</h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {['BHEL Haridwar', 'Air Liquide', 'Suzuki Motorcycle', 'Honeywell', 'Mahindra & Mahindra'].map((client, idx) => (
+                <div 
+                  key={client} 
+                  className="rounded-lg border border-border bg-gradient-to-br from-white to-surface px-5 py-4 text-center text-sm font-semibold text-primary hover:border-accent hover:shadow-md transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+                  style={{ animationDelay: `${idx * 50}ms` }}
+                >
+                  {client}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        </AnimatedCard>
       </section>
 
-      <section className="section-container">
-        <div className="rounded-xl bg-white p-8 shadow-card border border-border">
-          <h2 className="text-xl font-semibold text-primary">Trusted by 250+ industrial operations</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            <div className="rounded-lg border border-border bg-surface px-5 py-4 text-center text-sm font-semibold text-neutral">BHEL Haridwar</div>
-            <div className="rounded-lg border border-border bg-surface px-5 py-4 text-center text-sm font-semibold text-neutral">Air Liquide</div>
-            <div className="rounded-lg border border-border bg-surface px-5 py-4 text-center text-sm font-semibold text-neutral">Suzuki Motorcycle</div>
-            <div className="rounded-lg border border-border bg-surface px-5 py-4 text-center text-sm font-semibold text-neutral">Honeywell</div>
-            <div className="rounded-lg border border-border bg-surface px-5 py-4 text-center text-sm font-semibold text-neutral">Mahindra & Mahindra</div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-container">
+      {/* Services Section */}
+      <section className="section-container py-16">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-neutral">Core services</p>
-            <h2 className="mt-4 text-3xl font-semibold text-primary">A single partner for fire safety, gas pipeline systems and industrial maintenance</h2>
+          <FadeIn direction="left">
+            <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Core services</p>
+            <h2 className="mt-4 text-4xl font-bold text-primary">
+              A single partner for <TextHighlighter>fire safety</TextHighlighter>, gas pipeline systems and industrial maintenance
+            </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-neutral">
               Every service is built for decision-makers who need dependable systems, clear compliance and responsive execution across Haridwar and North India.
             </p>
-          </div>
+          </FadeIn>
           <div className="grid gap-6 sm:grid-cols-2">
-            {services.map((service) => (
-              <ServiceCard key={service.title} title={service.title} description={service.description} />
+            {services.map((service, idx) => (
+              <ServiceCard 
+                key={service.title} 
+                title={service.title} 
+                description={service.description}
+                delay={idx * 100}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-container bg-surface rounded-xl p-10">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-700">Why Four Way Engineers</p>
-            <h2 className="mt-4 text-3xl font-semibold text-primary">Proven industrial execution with compliance-first delivery</h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-700">
+      {/* Why Us Section */}
+      <HexagonBackground className="section-container bg-gradient-to-br from-surface via-white to-surface rounded-2xl py-16 px-8 my-16">
+        <div className="grid gap-10 lg:grid-cols-2 relative z-10">
+          <FadeIn direction="left">
+            <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Why Four Way Engineers</p>
+            <h2 className="mt-4 text-4xl font-bold text-primary">Proven industrial execution with <TextHighlighter>compliance-first</TextHighlighter> delivery</h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-neutral">
               We combine technical discipline, local delivery and documentation support so plant leaders can onboard a partner with confidence.
             </p>
-          </div>
+          </FadeIn>
           <div className="grid gap-4">
-            <div className="rounded-xl bg-white p-6 shadow-card">
-              <p className="font-semibold text-primary">25+ years of engineering practice</p>
-              <p className="mt-2 text-sm leading-7 text-neutral">Consistent delivery for fire systems, pipeline projects and maintenance contracts since 1999.</p>
-            </div>
-            <div className="rounded-xl bg-white p-6 shadow-card">
-              <p className="font-semibold text-primary">Single-source responsibility</p>
-              <p className="mt-2 text-sm leading-7 text-neutral">Design, installation, commissioning and handover from one experienced team.</p>
-            </div>
-            <div className="rounded-xl bg-white p-6 shadow-card">
-              <p className="font-semibold text-primary">Regional safety expertise</p>
-              <p className="mt-2 text-sm leading-7 text-neutral">Haridwar-based execution with knowledge of Uttarakhand and North India industrial standards.</p>
-            </div>
+            {[
+              { title: '25+ years of engineering practice', desc: 'Consistent delivery for fire systems, pipeline projects and maintenance contracts since 1999.' },
+              { title: 'Single-source responsibility', desc: 'Design, installation, commissioning and handover from one experienced team.' },
+              { title: 'Regional safety expertise', desc: 'Haridwar-based execution with knowledge of Uttarakhand and North India industrial standards.' },
+            ].map((item, idx) => (
+              <AnimatedCard key={item.title} delay={idx * 150}>
+                <div className="p-6 hover:bg-accent/5 transition-colors duration-300">
+                  <p className="font-semibold text-primary hover:text-accent transition-colors">{item.title}</p>
+                  <p className="mt-2 text-sm leading-7 text-neutral">{item.desc}</p>
+                </div>
+              </AnimatedCard>
+            ))}
           </div>
         </div>
-      </section>
+      </HexagonBackground>
 
-      <section className="section-container">
+      {/* Testimonials Section */}
+      <section className="section-container py-16">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-          <div className="rounded-xl bg-white p-10 shadow-card">
-            <p className="text-sm uppercase tracking-[0.3em] text-neutral">Project verification</p>
-            <h2 className="mt-4 text-3xl font-semibold text-primary">Industrial case study and results</h2>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral">
-              We help plant operators reduce failure points, meet audits, and keep production on schedule through practical engineering and disciplined delivery.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.name} className="rounded-xl border border-border bg-surface p-6">
-                <p className="text-sm leading-7 text-slate-700">“{testimonial.quote}”</p>
-                <p className="mt-4 text-sm font-semibold text-primary">{testimonial.name}</p>
+          <FadeIn direction="left">
+            <AnimatedCard>
+              <div className="p-10">
+                <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Project verification</p>
+                <h2 className="mt-4 text-3xl font-bold text-primary">Industrial case study and results</h2>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral">
+                  We help plant operators reduce failure points, meet audits, and keep production on schedule through practical engineering and disciplined delivery.
+                </p>
               </div>
+            </AnimatedCard>
+          </FadeIn>
+          <div className="grid gap-4">
+            {testimonials.map((testimonial, idx) => (
+              <AnimatedCard key={testimonial.name} delay={idx * 100}>
+                <div className="p-6 hover:bg-accent/5 transition-colors duration-300">
+                  <p className="text-sm leading-7 text-slate-700 italic">"{testimonial.quote}"</p>
+                  <p className="mt-4 text-sm font-semibold text-accent">{testimonial.name}</p>
+                </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-container bg-surface rounded-xl p-10 shadow-card">
+      {/* Certifications Section */}
+      <section className="section-container py-16">
+        <HexagonBackground className="bg-white rounded-2xl p-10 shadow-lg">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center relative z-10">
+            <FadeIn direction="left">
+              <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Certifications & compliance</p>
+              <h2 className="mt-4 text-3xl font-bold text-primary">Documentation and standards for <TextHighlighter>industrial audits</TextHighlighter></h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-neutral">
+                Our delivery includes compliance documentation for fire and gas systems, and structured maintenance records for annual safety reviews.
+              </p>
+            </FadeIn>
+            <div className="grid gap-4">
+              {certifications.map((item, idx) => (
+                <AnimatedCard key={item} delay={idx * 100}>
+                  <div className="p-6 hover:border-accent transition-all duration-300">
+                    <p className="font-semibold text-primary group-hover:text-accent">{item}</p>
+                  </div>
+                </AnimatedCard>
+              ))}
+            </div>
+          </div>
+        </HexagonBackground>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-container py-16">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-neutral">Certifications & compliance</p>
-            <h2 className="mt-4 text-3xl font-semibold text-primary">Documentation and standards for industrial audits</h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-neutral">
-              Our delivery includes compliance documentation for fire and gas systems, and structured maintenance records for annual safety reviews.
+          <FadeIn direction="left">
+            <p className="text-sm uppercase tracking-[0.3em] text-accent font-semibold">Request inspection</p>
+            <h2 className="mt-4 text-4xl font-bold text-primary">
+              Get a <TextHighlighter>site inspection</TextHighlighter> from our engineering team
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-neutral">
+              Share your requirement and our engineer will contact you within 24 hours.
             </p>
-          </div>
-          <div className="grid gap-4">
-            {certifications.map((item) => (
-              <div key={item} className="rounded-xl bg-white p-6 shadow-card">
-                <p className="font-semibold text-primary">{item}</p>
+            <div className="mt-6 flex gap-4">
+              <RainbowButton href="/request-quote">
+                📋 Request Inspection
+              </RainbowButton>
+              <ShimmerButton href="https://wa.me/919837476323" target="_blank" rel="noreferrer">
+                💬 Message on WhatsApp
+              </ShimmerButton>
+            </div>
+          </FadeIn>
+          <FadeIn direction="right" delay={200}>
+            <BorderBeam className="bg-gradient-to-br from-surface to-white p-10 rounded-xl">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                  <p className="font-semibold text-primary">Fast response within 24 hours</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                  <p className="font-semibold text-primary">Expert site analysis included</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                  <p className="font-semibold text-primary">Complimentary quote generation</p>
+                </div>
               </div>
-            ))}
-          </div>
+            </BorderBeam>
+          </FadeIn>
         </div>
       </section>
-      <section className="section-container">
-  <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-    
-    <div>
-      <p className="text-sm uppercase tracking-[0.3em] text-neutral">
-        Request inspection
-      </p>
-      <h2 className="mt-4 text-3xl font-semibold text-primary">
-        Get a site inspection from our engineering team
-      </h2>
-      <p className="mt-4 text-sm leading-7 text-neutral">
-        Share your requirement and our engineer will contact you within 24 hours.
-      </p>
-    </div>
 
-    <div className="rounded-xl border border-border bg-white p-8 shadow-card">
-      <LeadForm />
-    </div>
-
-  </div>
-</section>
-
-      <section className="section-container bg-white py-16">
-        <div className="rounded-xl border border-border bg-surface p-10 text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral">Ready to move</p>
-          <h2 className="mt-4 text-4xl font-semibold text-primary">Start with a site inspection from Haridwar’s trusted engineering partner.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-neutral">
-            Get a structured, compliance-first review for your plant and begin the path to safer operations and longer asset life.
+      {/* Final CTA */}
+      <section className="section-container py-16 bg-gradient-to-r from-primary via-primary to-accent rounded-2xl text-white text-center">
+        <FadeIn>
+          <h2 className="text-4xl font-bold mb-4">Ready to improve your industrial safety?</h2>
+          <p className="text-white/90 mb-8 max-w-2xl mx-auto leading-7">
+            Connect with Four Way Engineers today for a complimentary site inspection and tailored safety solution.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/request-quote" className="inline-flex rounded-lg bg-accent px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#e05b00]">
-              Book Inspection
-            </Link>
-            <Link href="tel:+919837476323" className="inline-flex rounded-lg border border-border bg-white px-8 py-4 text-sm font-semibold text-primary transition hover:border-primary hover:text-primary">
+          <div className="flex gap-4 justify-center flex-wrap">
+            <RainbowButton href="/request-quote">
+              Start Your Inspection
+            </RainbowButton>
+            <button className="rounded-lg border-2 border-white px-7 py-4 text-sm font-semibold hover:bg-white hover:text-primary transition-all duration-300">
               Call +91 98374 76323
-            </Link>
+            </button>
           </div>
-        </div>
+        </FadeIn>
       </section>
-      <WhatsAppButton />
     </>
   );
 }
