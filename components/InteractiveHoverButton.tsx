@@ -10,6 +10,7 @@ interface InteractiveHoverButtonProps {
   rel?: string;
   hoverColor?: string;
   baseColor?: string;
+  className?: string;
 }
 
 export function InteractiveHoverButton({ 
@@ -20,10 +21,11 @@ export function InteractiveHoverButton({
   rel,
   hoverColor = '#D62828',
   baseColor = '#0B1F3A',
+  className,
 }: InteractiveHoverButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const baseClasses = 'relative inline-flex rounded-lg px-7 py-4 text-sm font-semibold text-white overflow-hidden transition-all duration-300 group';
+  const baseClasses = `relative inline-flex rounded-lg px-7 py-4 text-sm font-semibold text-white overflow-hidden transition-all duration-300 group ${className || ''}`;
 
   const content = (
     <>

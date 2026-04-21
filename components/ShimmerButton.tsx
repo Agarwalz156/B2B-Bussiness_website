@@ -1,15 +1,17 @@
 'use client';
 
 interface ShimmerButtonProps {
+  className?: string;
   children: React.ReactNode;
   onClick?: () => void;
   href?: string;
   target?: string;
   rel?: string;
+  className?: string;
 }
 
-export function ShimmerButton({ children, onClick, href, target, rel }: ShimmerButtonProps) {
-  const baseClasses = 'relative inline-flex rounded-lg bg-accent px-7 py-4 text-sm font-semibold text-white overflow-hidden group transition-all duration-300 hover:shadow-lg';
+export function ShimmerButton({ children, onClick, href, target, rel, className }: ShimmerButtonProps) {
+  const baseClasses = `relative inline-flex rounded-lg bg-accent px-7 py-4 text-sm font-semibold text-white overflow-hidden group transition-all duration-300 hover:shadow-lg ${className || ''}`;
   
   const shimmerEffect = (
     <>
