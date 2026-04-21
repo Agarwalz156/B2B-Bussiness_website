@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { ShimmerButton } from './ShimmerButton';
 import { InteractiveHoverButton } from './InteractiveHoverButton';
@@ -12,12 +15,16 @@ const navLinks = [
 ];
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white shadow-sm">
       <div className="section-container flex flex-wrap items-center justify-between gap-4 py-4">
         <Link href="/" className="font-semibold text-2xl text-primary hover:text-accent transition-colors duration-300 animate-fade-in">
           Four Way Engineers
         </Link>
+
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 lg:flex text-sm font-medium text-neutral">
           {navLinks.map((item, index) => (
             <Link 
@@ -31,7 +38,24 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden p-2 text-primary hover:text-accent transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Desktop CTA Buttons */}
+        <div className="hidden lg:flex items-center gap-3">
           <InteractiveHoverButton
             href="tel:+919837476323"
             baseColor="#FFFFFF"
@@ -48,6 +72,42 @@ export function Header() {
           </ShimmerButton>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden border-t border-border bg-white">
+          <nav className="section-container py-4 space-y-4">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block py-2 text-sm font-medium text-neutral hover:text-accent transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="flex flex-col gap-3 pt-4 border-t border-border">
+              <InteractiveHoverButton
+                href="tel:+919837476323"
+                baseColor="#FFFFFF"
+                hoverColor="#E5E7EB"
+                className="w-full"
+              >
+                <span className="text-primary">Call Now</span>
+              </InteractiveHoverButton>
+              <ShimmerButton
+                href="https://wa.me/919837476323?text=Requesting%20site%20inspection%20for%20industrial%20fire%20safety"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full"
+              >
+                WhatsApp
+              </ShimmerButton>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

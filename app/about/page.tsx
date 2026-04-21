@@ -187,34 +187,3 @@ export default function AboutPage() {
     </section>
   );
 }
-      </div>
-
-      <div className="rounded-xl bg-surface p-10 shadow-card">
-        <h2 className="text-3xl font-semibold text-primary">Practical industrial engineering for decision-makers</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral">
-          Plant managers and safety officers choose Four Way Engineers for technically sound proposals, documented inspection outcomes, and field-level execution that aligns with local regulations.
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-xl bg-white p-6">
-            <p className="font-semibold text-primary">Gas piping and manifolds</p>
-            <p className="mt-2 text-sm leading-7 text-neutral">Systems for Ar, CO2, He, N2, O2, H2, D.A. and LPG distribution with automated control and leak-safe manifold design.</p>
-          </div>
-          <div className="rounded-xl bg-white p-6">
-            <p className="font-semibold text-primary">Fire systems and extinguishers</p>
-            <p className="mt-2 text-sm leading-7 text-neutral">Wet risers, hydrants, sprinklers, gas extinguisher systems and fire detection installations with audit-ready reporting.</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="rounded-xl bg-white p-10 shadow-card">
-        <h2 className="text-3xl font-semibold text-primary">Need a technical inspection?</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral">
-          Use our contact page to schedule a Haridwar-based engineering audit or request a quote for a fire safety, gas manifold, fabrication or welding support project.
-        </p>
-        <Link href="/contact" className="mt-8 inline-flex rounded-lg bg-accent px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#e05b00]">
-          Contact our team
-        </Link>
-      </div>
-    </section>
-  );
-}
